@@ -3,6 +3,7 @@ package clockinclockout.clockinclockoutrestopenshift.user;
 import clockinclockout.clockinclockoutrestopenshift.email.Email;
 import clockinclockout.clockinclockoutrestopenshift.email.EmailService;
 import clockinclockout.clockinclockoutrestopenshift.profile.Profile;
+import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,7 +52,7 @@ public class UserService {
                         .setUser( user )
                         .setPrimary( true )
                         .setRecordedTime( LocalDateTime.now() )
-                        .setConfirmationCode( "sampleConfirmationHashCode" ) //TODO to be properly implemented
+                        .setConfirmationCode( RandomString.make( 100 ) )
                 )
             );
 
