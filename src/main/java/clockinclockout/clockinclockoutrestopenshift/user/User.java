@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Locale;
 
-@Entity
+@Entity( name = "clk_user" )
 public class User {
 
     @Id
@@ -26,15 +26,17 @@ public class User {
     private Locale locale;
 
     @Transient
+    @javax.validation.constraints.Email( message = "email.address.validation.validEmail" )
     @NotEmpty( message = "user.email.validation.notEmpty" )
     @Size( min = 5, max = 50, message = "user.email.validation.size" )
     private transient String email;
 
     @JsonIgnore
-    @OneToMany( mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST )
+    @OneToMany( mappedBy = "user", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.REMOVE } )
     private List< Email > emails;
 
-    @OneToMany( mappedBy = "user", fetch = FetchType.LAZY )
+    @JsonIgnore
+    @OneToMany( mappedBy = "user", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.REMOVE } )
     private List< Profile > profiles;
 
     public User() {

@@ -18,6 +18,7 @@ public class Email {
     @JoinColumn( name = "id_clk_user", nullable = false )
     private User user;
 
+    @javax.validation.constraints.Email( message = "email.address.validation.validEmail" )
     @NotEmpty( message = "email.address.validation.notEmpty" )
     @Size( min = 5, max = 50, message = "email.address.validation.size" )
     @Column( length = 50, nullable = false, unique = true )

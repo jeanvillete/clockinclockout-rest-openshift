@@ -1,6 +1,7 @@
 package clockinclockout.clockinclockoutrestopenshift.user;
 
 import clockinclockout.clockinclockoutrestopenshift.email.EmailService;
+import clockinclockout.clockinclockoutrestopenshift.profile.ProfileService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class UserControllerTest {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ProfileService profileService;
 
     @Test
     public void validation_emptyJson() throws Exception {
@@ -77,6 +81,32 @@ public class UserControllerTest {
     }
 
     @Test
+    public void validation_wrongEmailAddress() throws Exception {
+        this.mockMvc
+            .perform(
+                post( "/users" )
+                    .contentType( MediaType.APPLICATION_JSON )
+                    .content( "{\"email\":\"fakeStringSupposedToBeEmailAddress\", \"password\":\"mypassword\"}" )
+            )
+            .andDo( print() )
+            .andExpect( status().isBadRequest() )
+            .andExpect( jsonPath( "$.messages", hasSize( 1 ) ) )
+            .andExpect(
+                jsonPath(
+                    "$.messages[0]",
+                    containsString( "It has to be provided a valid email address" )
+                )
+            );
+    }
+
+    /**
+     * This test case is for ensuring that for valid requests they are properly processed and recorded successfully,
+     * but in case further requests for the same email address is provided, so a validation returns a proper advise
+     * message.
+     * Furthermore, on each assertion/then (given, when, then) the integrity of database still valid.
+     * @throws Exception
+     */
+    @Test
     public void success_then_validation_duplicatedEmailAddress() throws Exception {
         String email = "mail@provider.com";
 
@@ -89,6 +119,10 @@ public class UserControllerTest {
             .andDo( print() )
             .andExpect( status().isCreated() )
             .andExpect( content().string( isEmptyString() ) );
+
+        assertThat( this.userRepository.count(), equalTo( 1L ) );
+        assertThat( this.emailService.count( email ), equalTo( 1 ) );
+        assertThat( this.profileService.count( new User( 1 ) ), equalTo( 1 ) );
 
         this.mockMvc
             .perform(
@@ -105,7 +139,8 @@ public class UserControllerTest {
                 )
             );
 
-        assertThat( this.emailService.count( email ), equalTo( 1 ) );
         assertThat( this.userRepository.count(), equalTo( 1L ) );
+        assertThat( this.emailService.count( email ), equalTo( 1 ) );
+        assertThat( this.profileService.count( new User( 1 ) ), equalTo( 1 ) );
     }
 }
