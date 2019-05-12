@@ -11,10 +11,11 @@ import java.util.List;
 import java.util.Locale;
 
 @Entity( name = "clk_user" )
+@SequenceGenerator( name = "clk_user_seq" )
 public class User {
 
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @GeneratedValue( strategy = GenerationType.IDENTITY, generator = "clk_user_seq" )
     private Integer id;
 
     @NotEmpty( message = "user.password.validation.notEmpty" )

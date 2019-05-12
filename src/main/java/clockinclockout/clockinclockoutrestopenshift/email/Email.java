@@ -8,10 +8,11 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Entity
+@SequenceGenerator( name = "email_seq" )
 public class Email {
 
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "email_seq" )
     private Integer id;
 
     @ManyToOne

@@ -7,10 +7,11 @@ import javax.validation.constraints.NotEmpty;
 import java.time.Duration;
 
 @Entity
+@SequenceGenerator( name = "profile_seq" )
 public class Profile {
 
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @GeneratedValue( strategy = GenerationType.IDENTITY, generator = "profile_seq" )
     private Integer id;
 
     @ManyToOne
