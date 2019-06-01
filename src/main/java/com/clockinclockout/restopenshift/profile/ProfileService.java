@@ -1,6 +1,6 @@
-package clockinclockout.clockinclockoutrestopenshift.profile;
+package com.clockinclockout.restopenshift.profile;
 
-import clockinclockout.clockinclockoutrestopenshift.user.User;
+import com.clockinclockout.restopenshift.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

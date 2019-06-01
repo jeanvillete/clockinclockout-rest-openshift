@@ -1,4 +1,4 @@
-package clockinclockout.clockinclockoutrestopenshift.user;
+package com.clockinclockout.restopenshift.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,7 +1,7 @@
-package clockinclockout.clockinclockoutrestopenshift.user;
+package com.clockinclockout.restopenshift.user;
 
-import clockinclockout.clockinclockoutrestopenshift.email.EmailService;
-import clockinclockout.clockinclockoutrestopenshift.profile.ProfileService;
+import com.clockinclockout.restopenshift.email.EmailService;
+import com.clockinclockout.restopenshift.profile.ProfileService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +17,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+//@ActiveProfiles( "dev-local" )
 @RunWith( SpringRunner.class )
 @SpringBootTest( webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT )
 @AutoConfigureMockMvc

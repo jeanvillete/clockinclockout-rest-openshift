@@ -1,6 +1,6 @@
-package clockinclockout.clockinclockoutrestopenshift.profile;
+package com.clockinclockout.restopenshift.profile;
 
-import clockinclockout.clockinclockoutrestopenshift.user.User;
+import com.clockinclockout.restopenshift.user.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;

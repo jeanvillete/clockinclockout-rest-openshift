@@ -1,4 +1,4 @@
-package clockinclockout.clockinclockoutrestopenshift;
+package com.clockinclockout.restopenshift;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

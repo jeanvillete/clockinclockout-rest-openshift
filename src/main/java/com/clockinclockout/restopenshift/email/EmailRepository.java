@@ -1,4 +1,4 @@
-package clockinclockout.clockinclockoutrestopenshift.email;
+package com.clockinclockout.restopenshift.email;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

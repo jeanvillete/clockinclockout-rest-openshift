@@ -1,7 +1,7 @@
-package clockinclockout.clockinclockoutrestopenshift.user;
+package com.clockinclockout.restopenshift.user;
 
-import clockinclockout.clockinclockoutrestopenshift.email.Email;
-import clockinclockout.clockinclockoutrestopenshift.profile.Profile;
+import com.clockinclockout.restopenshift.email.Email;
+import com.clockinclockout.restopenshift.profile.Profile;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;

@@ -1,0 +1,22 @@
+spring:
+  application:
+      name: clockinclockout-rest-openshift
+  messages:
+    basename: messages
+  jpa:
+    show-sql: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health,loggers
+
+#logging:
+#  pattern:
+#    console: "%d %-5level [%thread] %logger{0}: %msg%n"
+#  level:
+#    root: ERROR

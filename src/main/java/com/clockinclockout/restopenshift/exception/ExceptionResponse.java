@@ -1,4 +1,4 @@
-package clockinclockout.clockinclockoutrestopenshift.exception;
+package com.clockinclockout.restopenshift.exception;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
