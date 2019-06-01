@@ -15,8 +15,8 @@ management:
       exposure:
         include: info,health,loggers
 
-#logging:
-#  pattern:
-#    console: "%d %-5level [%thread] %logger{0}: %msg%n"
-#  level:
-#    root: ERROR
+logging:
+  pattern:
+    console: "%d %-5level [%thread] %logger{0}: %msg%n"
+  level:
+    root: ERROR
